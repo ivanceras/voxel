@@ -1,6 +1,6 @@
 use voxeltree::VoxelTree;
 
-struct Object{
+pub struct Object{
     file: String
 }
 

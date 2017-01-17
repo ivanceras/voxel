@@ -1,7 +1,12 @@
 use voxeltree::VoxelTree;
+use object::Object;
+use voxeltree::Transformation;
 
 
-struct World; 
+struct World{ 
+    objects: Vec<(Object, Location, Transformation)>
+}
+
 
 
 impl World{
@@ -14,6 +19,30 @@ impl World{
     /// zoomed-in areas of the world will also load further higher
     /// LOD of object along the zoomed-in rays
     fn get_voxel_tree() -> VoxelTree<bool>{
+        VoxelTree::default()
+    }
+
+    /// add an object to the scene
+    /// location, transformation
+    /// the voxel tree will have to be called again to update the tree
+    fn add_object(&mut self, obj: Object, loc: &Location, trans: &Transformation){
+        self.objects.push((obj, loc.clone(), trans.clone() ));    
+    }
+}
+
+
+#[derive(Clone)]
+struct Location{
+    position: Vec<u64>, // position at each level
+}
+
+impl Location{
+
+    fn get_lod(&self) -> usize{
+        self.position.len()
+    }
+
+    fn get_voxel_tree(&self) -> VoxelTree<bool>{
         VoxelTree::default()
     }
 }

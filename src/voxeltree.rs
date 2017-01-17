@@ -18,7 +18,8 @@ impl <T>Default for VoxelTree<T>{
 }
 
 
-struct Transformation{
+#[derive(Clone)]
+pub struct Transformation{
     rotation: Vector,
     scale: Vector,
 }
@@ -33,9 +34,12 @@ impl <T>VoxelTree<T>{
     
     /// calculate the intersection of the 2 voxeltree and return 
     /// a voxel tree structure of the intersection
+    /// done by testing intersection from the lower level LOD
+    /// to the higher level LOD
     fn intersection(&self, other: &VoxelTree<T>)->Self{
         VoxelTree::default() 
     }
+
 
     /// transform the voxel tree into the a different coordinate space
     fn transform(&self, tr: &Transformation) -> Self{

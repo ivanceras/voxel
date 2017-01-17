@@ -1,11 +1,12 @@
 
 struct Ray{
-    direction: Vector,
-    origin: Point,
+    direction: Vector, // the direction of the ray
+    origin: Point, // the starting point of the ray
+    length: f64, // the length of the ray
 }
 
 
-struct BeamFrustum{
+struct FrustumBeam{
     ray: Ray,
     angle: f64,
 }
@@ -17,14 +18,14 @@ struct BeamFrustum{
 /// and finally some radius when it 
 /// reaches the maximum length of
 /// the ray
-struct Beam{
+struct ConeBeam{
     ray: Ray,
     angle: f64,
 }
 
 
-impl Beam{
-    /// the tree that descibes the beam at
+impl ConeBeam{
+    /// the tree that describes the beam at
     /// with at each level of detail
     fn get_voxel_tree()->VoxelTree<bool>{
         VoxelTree::default() 
