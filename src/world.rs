@@ -2,6 +2,8 @@ use voxeltree::VoxelTree;
 use object::Object;
 use voxeltree::Transformation;
 use vector::Vector;
+use point::Point;
+
 
 
 struct World{ 

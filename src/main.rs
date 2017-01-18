@@ -3,6 +3,8 @@ mod vector;
 mod camera;
 mod world;
 mod object;
+mod point;
+mod frustum;
 
 fn main() {
     println!("Hello, world!");
