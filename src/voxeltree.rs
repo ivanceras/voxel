@@ -1,6 +1,7 @@
 use vector::Vector;
 
-/// the sparse voxel tree that represents a structure
+/// a heirarchial structure of  voxel tree 
+/// which describes a volume
 pub struct VoxelTree<T>{
     bitset: u64,
     content: Option<T>,

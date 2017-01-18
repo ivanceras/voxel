@@ -1,6 +1,7 @@
 use voxeltree::VoxelTree;
 use object::Object;
 use voxeltree::Transformation;
+use vector::Vector;
 
 
 struct World{ 
@@ -36,6 +37,15 @@ struct Location{
     position: Vec<u64>, // position at each level
 }
 
+impl Default for Location{
+
+    fn default()->Self{
+        Location{
+            position: vec![]
+        }
+    }
+}
+
 impl Location{
 
     fn get_lod(&self) -> usize{
@@ -44,5 +54,12 @@ impl Location{
 
     fn get_voxel_tree(&self) -> VoxelTree<bool>{
         VoxelTree::default()
+    }
+
+    /// calculates the location based from points.
+    /// where the world space is equivalent to
+    /// -0.5 to 0.5
+    fn from_point(p:&Point) -> Self{
+        Location::default() 
     }
 }
